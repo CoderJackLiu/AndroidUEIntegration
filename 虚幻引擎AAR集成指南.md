@@ -2,6 +2,74 @@
 
 本文档说明如何将虚幻引擎（Unreal Engine）打包的 AAR 库集成到 Android 项目中。
 
+## ⚠️ 前提条件
+
+在开始集成之前，你需要先从虚幻引擎项目生成 AAR 文件。
+
+### AAR 文件来源
+
+AAR 文件是从虚幻引擎的 Android 打包项目生成的：
+
+**虚幻引擎项目路径示例**:
+```
+E:\AndroidAPP\AndroidShipping1\Android\arm64\
+```
+
+### 如何生成 AAR？
+
+#### 方法 1: 使用自动化脚本（推荐）
+
+在虚幻引擎 Android 项目目录下运行：
+
+```bash
+cd E:\AndroidAPP\AndroidShipping1\Android
+.\build-aar.bat
+```
+
+生成的 AAR 位置：
+```
+arm64/gradle/app/build/outputs/aar/app-release.aar
+```
+
+#### 方法 2: 手动构建
+
+1. **修改 build.gradle**（备份原文件）
+
+文件位置：`arm64/gradle/app/build.gradle`
+
+```gradle
+// 将这行：
+apply plugin: 'com.android.application'
+
+// 改为：
+apply plugin: 'com.android.library'
+
+// 并注释掉这行：
+// applicationId PACKAGE_NAME
+```
+
+2. **构建 AAR**
+
+```bash
+cd arm64/gradle
+gradlew :app:assembleRelease
+```
+
+3. **恢复原配置**（如果需要继续构建 APK）
+
+```bash
+.\restore-apk-mode.bat
+```
+
+### AAR 文件大小
+
+生成的 AAR 文件约 **250-300MB**，因为包含了：
+- 虚幻引擎 native 库（.so 文件）
+- Java 代码和资源
+- 所有必需的依赖
+
+---
+
 ## 📋 集成步骤总览
 
 1. 复制 AAR 文件和资源文件
