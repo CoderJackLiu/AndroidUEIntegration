@@ -1,5 +1,6 @@
 package com.yourcompany.mainapp3
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -27,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+            // 启动虚幻引擎游戏
+            launchUnrealEngine()
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -54,5 +54,21 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun launchUnrealEngine() {
+        try {
+            // 启动虚幻引擎的 SplashActivity
+            val intent = Intent()
+            intent.setClassName(this, "com.epicgames.unreal.SplashActivity")
+            startActivity(intent)
+        } catch (e: Exception) {
+            Snackbar.make(
+                binding.root,
+                "启动虚幻引擎失败: ${e.message}",
+                Snackbar.LENGTH_LONG
+            ).show()
+            e.printStackTrace()
+        }
     }
 }
