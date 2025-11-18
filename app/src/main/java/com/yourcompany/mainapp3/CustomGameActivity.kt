@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.epicgames.unreal.GameActivity
 
 /**
@@ -38,6 +39,25 @@ class CustomGameActivity : GameActivity() {
             // 设置返回按钮点击事件
             overlayView?.findViewById<Button>(R.id.btnBackToMain)?.setOnClickListener {
                 onBackToMainClicked()
+            }
+
+            // 设置测试按钮 1 点击事件
+            overlayView?.findViewById<Button>(R.id.btnTest1)?.setOnClickListener {
+                Toast.makeText(this, "测试按钮 1 被点击了！", Toast.LENGTH_SHORT).show()
+            }
+
+            // 设置测试按钮 2 点击事件
+            overlayView?.findViewById<Button>(R.id.btnTest2)?.setOnClickListener {
+                Toast.makeText(this, "测试按钮 2 被点击了！这是蓝色按钮", Toast.LENGTH_SHORT).show()
+            }
+
+            // 设置测试按钮 3 点击事件
+            overlayView?.findViewById<Button>(R.id.btnTest3)?.setOnClickListener {
+                Toast.makeText(
+                    this, 
+                    "双进程架构测试成功！\nUE 进程：${android.os.Process.myPid()}", 
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
             // 将覆盖层添加到内容视图

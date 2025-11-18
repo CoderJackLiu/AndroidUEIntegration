@@ -33,5 +33,44 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
+    <!-- 底部测试按钮 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="#80000000">
+
+        <Button
+            android:id="@+id/btnTest1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="测试按钮 1"
+            android:textSize="16sp"
+            android:backgroundTint="#4CAF50"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnTest2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="测试按钮 2"
+            android:textSize="16sp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnTest3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="显示提示"
+            android:textSize="16sp"
+            android:backgroundTint="#FF9800"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
 </FrameLayout>
 
