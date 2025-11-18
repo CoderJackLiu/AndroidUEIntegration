@@ -44,7 +44,19 @@ UE 进程 (com.yourcompany.mainapp3:ue_process)
 
 ## 快速开始
 
-### 构建并安装
+### 方式 1：直接下载 APK（推荐）
+
+[![下载 APK](https://img.shields.io/badge/下载-APK%20v2.0.0-blue.svg)](https://github.com/CoderJackLiu/AndroidUEIntegration/releases/download/v2.0.0/MainApp3-v2.0.0.apk)
+
+**下载链接**：[MainApp3-v2.0.0.apk](https://github.com/CoderJackLiu/AndroidUEIntegration/releases/download/v2.0.0/MainApp3-v2.0.0.apk)
+
+**APK 信息**：
+- 版本：v2.0.0
+- 大小：约 250-300MB
+- 架构：ARM64-v8a
+- 最低 Android 版本：Android 10 (API 29)
+
+### 方式 2：从源码构建
 
 ```bash
 # 构建并安装到设备
