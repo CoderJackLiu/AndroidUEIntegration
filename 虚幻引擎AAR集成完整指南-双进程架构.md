@@ -1,6 +1,6 @@
 # 虚幻引擎 AAR 集成完整指南 - 双进程架构
 
-## 📖 概述
+## 概述
 
 本文档详细说明如何将虚幻引擎 Android 项目打包为 AAR，并集成到原生 Android 应用中，使用**双进程架构**解决 UE 退出时导致的崩溃问题。
 
@@ -1067,18 +1067,18 @@ adb logcat | findstr "com.yourcompany.mainapp3"
 adb logcat | findstr "ue_process"
 ```
 
-### Q7: 双进程架构适用于所有 Native 库吗？
+### Q7: 双进程架构的通用性如何？
 
-**A**: 是的，这是通用方案。
+**A**: 这是专为虚幻引擎设计的解决方案。
 
-- 不仅限于虚幻引擎
-- 任何调用 `exit()` 的 Native 库都适用
-- Unity、Cocos2d-x、自定义 Native 模块等
+- 本项目专注于 UE 集成的特定问题
+- 完美解决 UE Native 代码的退出行为
+- 经过充分测试和验证
 
-**原理相同**：
-- Native 库运行在独立进程
-- `exit()` 只终止该进程
-- 主进程不受影响
+**核心原理**：
+- UE 运行在独立进程（`:ue_process`）
+- Native 层的 `exit()` 调用被隔离
+- 主应用进程稳定运行
 
 ---
 
@@ -1120,9 +1120,7 @@ adb logcat | findstr "ue_process"
 
 ### 适用场景
 
-- 集成虚幻引擎、Unity、Cocos2d-x 等游戏引擎
-- 集成任何可能调用 `exit()` 的 Native 库
-- 需要高稳定性的商业应用
+本指南专注于虚幻引擎的 Android 集成，解决其特有的退出崩溃问题。双进程架构是经过验证的成熟解决方案。
 
 ---
 
@@ -1153,7 +1151,9 @@ adb logcat | findstr "ue_process"
 
 ---
 
-**文档版本**: 1.0  
-**最后更新**: 2024  
+**文档版本**: 2.0  
+**最后更新**: 2025-11-18  
+**适用版本**: MainApp3 v2.0.0  
+**架构**: 双进程架构（Multi-Process Architecture）  
 **状态**: ✅ 已验证可用
 
