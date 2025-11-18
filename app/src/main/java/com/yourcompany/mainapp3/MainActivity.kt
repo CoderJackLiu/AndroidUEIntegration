@@ -58,9 +58,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchUnrealEngine() {
         try {
-            // 启动虚幻引擎的 SplashActivity
-            val intent = Intent()
-            intent.setClassName(this, "com.epicgames.unreal.SplashActivity")
+            // 启动自定义的 CustomGameActivity（带有 Android UI 覆盖层）
+            val intent = Intent(this, CustomGameActivity::class.java)
             startActivity(intent)
         } catch (e: Exception) {
             Snackbar.make(

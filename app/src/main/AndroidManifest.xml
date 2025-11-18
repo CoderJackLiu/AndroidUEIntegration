@@ -34,12 +34,39 @@
             </intent-filter>
         </activity>
 
+        <!-- 自定义的 GameActivity，带有 Android UI 覆盖层 -->
+        <!-- 运行在独立进程中，UE 崩溃不影响主进程 -->
+        <activity
+            android:name=".CustomGameActivity"
+            android:exported="false"
+            android:launchMode="standard"
+            android:process=":ue_process"
+            android:theme="@style/Theme.MainApp3.NoActionBar"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="mcc|mnc|uiMode|density|screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden|keyboard|navigation|touchscreen|locale|fontScale|layoutDirection">
+            <meta-data android:name="android.app.lib_name" android:value="Unreal" />
+        </activity>
+
         <!-- 注意：UE 的 Activities 和 Services 已经在 AAR 的 Manifest 中定义 -->
         
         <!-- 移除 SplashActivity 的启动器入口，只保留内部调用 -->
         <activity
             android:name="com.epicgames.unreal.SplashActivity"
             android:exported="false"
+            tools:node="merge"
+            tools:replace="android:exported">
+            <intent-filter tools:node="remove">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 移除 GameActivity 的启动器入口 -->
+        <!-- 同样运行在独立进程中 -->
+        <activity
+            android:name="com.epicgames.unreal.GameActivity"
+            android:exported="false"
+            android:process=":ue_process"
             tools:node="merge"
             tools:replace="android:exported">
             <intent-filter tools:node="remove">
